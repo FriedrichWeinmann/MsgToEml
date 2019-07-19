@@ -1,0 +1,22 @@
+﻿
+# ignore the settings folder and files for VSCode and PSS
+.vscode/*
+*.psproj
+*TempPoint*
+
+# Ignore staging info from Visual Studio
+library/MsgToEml/.vs/*
+library/MsgToEml/MsgToEml/bin/*
+library/MsgToEml/MsgToEml/obj/*
+
+# ignore PowerShell Studio MetaData
+MsgToEml/MsgToEml.psproj
+MsgToEml/MsgToEml.psproj.bak
+MsgToEml/MsgToEml.psprojs
+MsgToEml/MsgToEml.psproj
+
+# ignore the TestResults
+TestResults/*
+
+# ignore the publishing Directory
+publish/*
