@@ -96,7 +96,7 @@
 		$testFolder = [Microsoft.Exchange.WebServices.Data.WellKnownFolderName]::Root
 		try
 		{
-			$baseFolder = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($exchangeService, $testFolder)
+			$null = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($exchangeService, $testFolder)
 			Write-PSFMessage -String 'Connect-EwsExchange.ConnectionSuccess' -StringValues $Mailbox
 		}
 		catch
