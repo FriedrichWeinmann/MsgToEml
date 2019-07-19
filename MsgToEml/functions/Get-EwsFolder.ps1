@@ -66,7 +66,6 @@
 	process
 	{
 		if (Test-PSFFunctionInterrupt) { return }
-		$iterations = 0
 		
 		if (-not $Name) { return $baseFolder }
 		if ($baseFolder.DisplayName -like $Name) { $baseFolder }
