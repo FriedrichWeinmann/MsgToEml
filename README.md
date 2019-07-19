@@ -1,33 +1,19 @@
-﻿# Description
+﻿# MsgToEml
 
-Insert a useful description for the MsgToEml project here.
+## Description
 
-Remember, it's the first thing a visitor will see.
+A small project designed to convert MSG Email files to EML format.
 
-# Project Setup Instructions
-## Working with the layout
+## Note
 
- - Don't touch the psm1 file
- - Place functions you export in `functions/` (can have subfolders)
- - Place private/internal functions invisible to the user in `internal/functions` (can have subfolders)
- - Don't add code directly to the `postimport.ps1` or `preimport.ps1`.
-   Those files are designed to import other files only.
- - When adding files you load during `preimport.ps1`, be sure to add corresponding entries to `filesBefore.txt`.
-   The text files are used as reference when compiling the module during the build script.
- - When adding files you load during `postimport.ps1`, be sure to add corresponding entries to `filesAfter.txt`.
-   The text files are used as reference when compiling the module during the build script.
+This project utilizes EWS and Exchange to perform the conversion, so EWS is needed.
 
-## Setting up CI/CD
+It also uses Outlook COM to load the Outlook-Proprietary MSG file into the mailbox
 
-> To create a PR validation pipeline, set up tasks like this:
+## Example
 
- - Install Prerequisites (PowerShell Task; VSTS-Prerequisites.ps1)
- - Validate (PowerShell Task; VSTS-Validate.ps1)
- - Publish Test Results (Publish Test Results; NUnit format; Run no matter what)
+```powershell
+Get-ChildItem *.msg | Convert-MsgToEml
+```
 
-> To create a build/publish pipeline, set up tasks like this:
-
- - Install Prerequisites (PowerShell Task; VSTS-Prerequisites.ps1)
- - Validate (PowerShell Task; VSTS-Validate.ps1)
- - Build (PowerShell Task; VSTS-Build.ps1)
- - Publish Test Results (Publish Test Results; NUnit format; Run no matter what)
+This will convert all msg files in the current folder to eml (or die trying).
