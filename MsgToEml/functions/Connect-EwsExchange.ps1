@@ -11,6 +11,10 @@
 	.PARAMETER Mailbox
 		The email address to connect to.
 		The correct server to contact will be determined using Auto-Discover based on this address.
+		
+	.PARAMETER Url
+		The url to connect to the EWS service with.
+		Disables autodiscovery.
 	
 	.PARAMETER Credential
 		Alternative credentials to use for connecting to the server.
@@ -29,10 +33,15 @@
 	
 		Connect to Max' mailbox in the contoso domain.
 #>
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = 'Autodiscover')]
 	param (
+	    [Parameter(ParameterSetName = 'Autodiscover')]
 		[string]
 		$Mailbox,
+		
+		[Parameter(Mandatory = $true, ParameterSetName = 'Url')]
+		[string]
+		$Url,
 		
 		[PSCredential]
 		$Credential = [Management.Automation.PSCredential]::Empty,
@@ -46,7 +55,7 @@
 	
 	begin
 	{
-		if (-not $Mailbox)
+		if (-not $Mailbox -and -not $Url)
 		{
 			try
 			{
@@ -77,8 +86,15 @@
 		}
 		try
 		{
-			Write-PSFMessage -String 'Connect-EwsExchange.AccessingMailbox' -StringValues $Mailbox
-			$exchangeService.AutodiscoverUrl($Mailbox)
+			if (-not $Url)
+			{
+				Write-PSFMessage -String 'Connect-EwsExchange.AccessingMailbox' -StringValues $Mailbox
+				$exchangeService.AutodiscoverUrl($Mailbox)
+			}
+			else
+			{
+				$exchangeService.Url = $Url
+			}
 		}
 		catch
 		{
