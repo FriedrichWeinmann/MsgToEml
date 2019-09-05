@@ -3,7 +3,7 @@
 	RootModule = 'MsgToEml.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0'
+	ModuleVersion = '1.0.1'
 	
 	# ID used to uniquely identify this module
 	GUID = '6dcf066a-8d45-4e37-8656-e185c1fe5b10'
@@ -26,7 +26,7 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='1.0.19' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.0.35' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
